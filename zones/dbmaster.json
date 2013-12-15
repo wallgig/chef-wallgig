@@ -1,0 +1,27 @@
+{
+  "brand": "kvm",
+  "resolvers": [
+    "8.8.8.8",
+    "8.8.4.4"
+  ],
+  "ram": "2048",
+  "vcpus": "4",
+  "alias": "dbmaster",
+  "nics": [
+    {
+      "nic_tag": "vswitch0",
+      "ip": "10.0.101",
+      "netmask": "255.255.255.0",
+      "gateway": "10.0.0.1",
+      "model": "virtio",
+    }
+  ],
+  "disks": [
+    {
+      "image_uuid": "94384a12-bbeb-11e2-aec2-2bfa9742484b",
+      "boot": true,
+      "model": "virtio",
+      "size": "51200"
+    }
+  ]
+}
