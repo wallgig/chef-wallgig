@@ -1,0 +1,16 @@
+{
+  "name": "base",
+  "description": "The base role that for all the nodes",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[openssh]",
+    "recipe[ntp]"
+  ],
+  "env_run_lists": {
+  }
+}
