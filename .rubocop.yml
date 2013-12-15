@@ -1,0 +1,19 @@
+AllCops:
+  Excludes:
+    - vendor/**
+    - cookbooks/**
+    - tmp/**
+    - .chef/**
+
+Encoding:
+  Enabled: false
+HashSyntax:
+  Enabled: false
+LineLength:
+  Enabled: false
+StringLiterals:
+  Enabled: false
+WordArray:
+  Enabled: false
+NumericLiterals:
+  Enabled: false
