@@ -4,17 +4,14 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "logwatch": {
-      "mailto": "greg@gregf.org"
+      "mailto": "root"
     },
     "locale": {
       "lang": "en_US.utf8"
     },
     "resolver": {
       "search": "wallgig.net",
-      "nameservers": [
-        "8.8.8.8",
-        "8.8.4.4"
-      ]
+      "nameservers": ["8.8.8.8", "8.8.4.4"]
     },
     "ntp": {
       "is_server": false,
@@ -42,7 +39,7 @@
     },
     "postfix": {
       "aliases": {
-        "root": "greg@gregf.org"
+        "root": ["greg@gregf.org", "jianyuan@gmail.com"]
       }
     }
   },
