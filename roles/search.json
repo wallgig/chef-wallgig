@@ -1,0 +1,22 @@
+{
+  "name": "search",
+  "description": "This role is used for search servers.",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "redisio": {
+      "servers": [
+        {
+          "name": "master",
+          "port": "6379",
+          "address": "10.0.0.101"
+        }
+      ]
+    }
+  },
+  "override_attributes": {},
+  "chef_type": "role",
+  "run_list": [
+    "recipe[redisio]"
+  ],
+  "env_run_lists": {}
+}
