@@ -10,7 +10,7 @@
   "nics": [
     {
       "nic_tag": "vswitch0",
-      "ip": "10.0.101",
+      "ip": "10.0.102",
       "netmask": "255.255.255.0",
       "gateway": "10.0.0.1",
       "model": "virtio",
