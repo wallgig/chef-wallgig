@@ -1,6 +1,6 @@
 {
-  "name": "search",
-  "description": "This role is used for search servers.",
+  "name": "queue",
+  "description": "This role is used for our uploads queue.",
   "json_class": "Chef::Role",
   "default_attributes": {
     "redisio": {
