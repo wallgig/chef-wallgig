@@ -14,9 +14,5 @@ cookbook_path [
   "#{current_dir}/../cookbooks", 
   "#{current_dir}/../site-cookbooks"
 ]
-encrypted_data_bag_secret "#{current_dir}/databag.key"
 
-# http://jtimberman.housepub.org/blog/2013/02/01/local-only-knife-configuration/
-if ::File.exist?(File.expand_path("../knife.local.rb", __FILE__))
-  Chef::Config.from_file(File.expand_path("../knife.local.rb", __FILE__))
-end
+knife[:vault_mode] = 'client'
