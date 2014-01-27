@@ -1,5 +1,0 @@
-vm:
-  - 1.9.3
-script:
-  - bundle exec foodcritic -f any site-cookbooks
-  - bundle exec rubocop
