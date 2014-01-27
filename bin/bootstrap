@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Usage: ./bootstrap [host]
+
+source .config.sh
+
+# The host key might change when we instantiate a new VM, so
+# we remove (-R) the old host key from known_hosts
+ssh-keygen -R "${CHEF_NODE#*@}" 2> /dev/null
+
+bundle exec knife bootstrap -N ${CHEF_NODE} --template-file .chef/bootstrap/chef-debian.erb -u root -r '' ${CHEF_NODE}

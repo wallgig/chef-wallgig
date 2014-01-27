@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if ! command -v bundle >/dev/null; then
+  gem install bundler
+fi
+
+bundle install
+bundle exec berks install
