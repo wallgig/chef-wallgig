@@ -48,11 +48,6 @@
         "minute": "0",
         "hour": "*"
       }
-    },
-    "postfix": {
-      "aliases": {
-        "root": ["greg@gregf.org", "jianyuan@gmail.com"]
-      }
     }
   },
   "override_attributes": {},

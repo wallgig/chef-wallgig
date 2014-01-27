@@ -4,7 +4,7 @@
   "default_attributes": {
     "postfix": {
       "aliases": {
-        "root": "greg@gregf.org"
+        "root": ["greg@gregf.org", "jianyuan@gmail.com"]
       },
       "main": {
         "inet_interfaces": "loopback-only"
