@@ -1,0 +1,19 @@
+{
+  "name": "www.wallgig.net",
+  "chef_environment": "production",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "run_list": [
+    "role[base]",
+    "role[security]",
+    "role[mail]",
+    "role[logging]",
+    "role[queue]",
+    "role[search]",
+    "role[database]",
+    "role[web]"
+  ]
+}
