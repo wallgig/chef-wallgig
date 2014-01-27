@@ -1,0 +1,14 @@
+{
+  "name": "logging",
+  "description": "The logging role sets up any logging tools",
+  "default_attributes": {
+    "rsyslog": {
+      "repeated_msg_reduction": "off"
+    }
+  },
+  "run_list": [
+    "recipe[logrotate]",
+    "recipe[logwatch]",
+    "recipe[rsyslog]"
+  ]
+}

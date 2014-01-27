@@ -3,8 +3,27 @@
   "description": "The base role that for all the nodes",
   "json_class": "Chef::Role",
   "default_attributes": {
-    "logwatch": {
-      "mailto": "root"
+    "sanitize": {
+      "iptables": false,
+      "install_packages": [
+        "htop",
+        "most",
+        "whois",
+        "traceroute",
+        "lsof",
+        "elinks",
+        "lynx",
+        "netcat-openbsd",
+        "mtr",
+        "strace",
+        "curl",
+        "wget",
+        "man",
+        "sysstat"
+      ]
+    },
+    "omnibus_updater": {
+      "version": "11.8.2-1"
     },
     "locale": {
       "lang": "en_US.utf8"
@@ -30,13 +49,6 @@
         "hour": "*"
       }
     },
-    "openssh": {
-      "server": {
-        "password_authentication": "no",
-        "permit_root_login": "no",
-        "subsystem": "sftp internal-sftp"
-      }
-    },
     "postfix": {
       "aliases": {
         "root": ["greg@gregf.org", "jianyuan@gmail.com"]
@@ -46,9 +58,17 @@
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
+    "recipe[annoyances]",
+    "recipe[apticron]",
     "recipe[apt]",
-    "recipe[openssh]",
-    "recipe[ntp]"
+    "recipe[locale]",
+    "recipe[chef-client::cron]",
+    "recipe[chef-client::delete_validation]",
+    "recipe[wallgig::users]",
+    "recipe[ntp]",
+    "recipe[omnibus_updater]",
+    "recipe[sanitize]",
+    "recipe[motd]"
   ],
   "env_run_lists": {}
 }

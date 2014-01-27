@@ -1,22 +1,23 @@
 {
   "name": "search",
-  "description": "This role is used for search servers.",
+  "description": "This role is used for searching.",
   "json_class": "Chef::Role",
   "default_attributes": {
-    "redisio": {
-      "servers": [
-        {
-          "name": "master",
-          "port": "6379",
-          "address": "127.0.0.1"
-        }
-      ]
+    "java": {
+      "jdk_version": "7"
+    },
+    "elasticsearch": {
+      "bootstrap": {
+        "cluster_name": "elasticsearch_wallgig",
+        "mlockall": false
+      }
     }
   },
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[redisio]"
+    "recipe[java]",
+    "recipe[elasticsearch]"
   ],
   "env_run_lists": {}
 }

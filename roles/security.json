@@ -1,0 +1,28 @@
+{
+  "name": "security",
+  "description": "Sets up any system security",
+  "default_attributes": {
+    "openssh": {
+      "server": {
+        "protocol": "2",
+        "password_authentication": "no",
+        "permit_root_login": "no",
+        "use_p_a_m": "no",
+        "print_motd": "yes",
+        "login_grace_time": "30"
+      }
+    },
+    "authorization": {
+      "sudo": {
+        "passwordless": true
+      }
+    }
+  },
+  "run_list": [
+    "recipe[openssh]",
+    "recipe[sudo]",
+    "recipe[fail2ban]",
+    "recipe[wallgig::ip_security]",
+    "recipe[wallgig::firewall]"
+  ]
+}

@@ -3,20 +3,16 @@
   "description": "This role is used for our uploads queue.",
   "json_class": "Chef::Role",
   "default_attributes": {
-    "redisio": {
-      "servers": [
-        {
-          "name": "master",
-          "port": "6379",
-          "address": "127.0.0.1"
-        }
-      ]
+    "redis": {
+      "bind": "127.0.0.1",
+      "ulimit": "100000"
     }
   },
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[redisio]"
+    "recipe[redis]",
+    "recipe[redis::server]"
   ],
   "env_run_lists": {}
 }

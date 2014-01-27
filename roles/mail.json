@@ -1,0 +1,18 @@
+{
+  "name": "mail",
+  "description": "The mailer role sets up smtp services",
+  "default_attributes": {
+    "postfix": {
+      "aliases": {
+        "root": "greg@gregf.org"
+      },
+      "main": {
+        "inet_interfaces": "loopback-only"
+      }
+    }
+  },
+  "run_list": [
+    "recipe[postfix]",
+    "recipe[postfix::aliases]"
+  ]
+}

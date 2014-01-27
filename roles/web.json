@@ -1,0 +1,15 @@
+{
+  "name": "web",
+  "description": "This role is used for the website.",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {},
+  "chef_type": "role",
+  "run_list": [
+    "recipe[imagemagick]",
+    "recipe[wallgig::ruby]",
+    "recipe[wallgig::nginx]"
+  ],
+  "env_run_lists": {}
+}
