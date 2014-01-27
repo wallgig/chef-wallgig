@@ -1,0 +1,21 @@
+{
+  "name": "data_bag_item_users_toor",
+  "json_class": "Chef::DataBagItem",
+  "chef_type": "data_bag_item",
+  "data_bag": "users",
+  "raw_data": {
+    "id": "toor",
+    "username": "toor",
+    "comment": "For chef-client",
+    "shell": "/bin/bash",
+    "admin": true,
+    "ssh_keys": [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAu9RilgAABwriIMucsw8WqjVorUaIkLB/ge7qs3nrpCf+5x7Nb7LDeg7IYSVVSBkQ6soxcCg+7h45yOykQieXKuzHENCMQ4rrY0n3YPaADf+I4cIIFu3Wf54jELdkIHIo7CR0XOTAjgWmDFhKYDeQayE7TWkYEfV2JN+9W7MdwSd35Eq7eFrZ4iU/kv7ipxy4O6Se/7yoFynvPwr10cffqfkQz2+Vt/O/iUU0dXMTzSjQQteREu2JzfkOHtvJ2xT9KMW8d/I1rFuVHRfXup3m3tgi+aPFwplGfZLsMJY7EFCQdttmEcvlje065l3SnQXNrkX/Uzh3Sm1Z1HSUSyAR gregf@jerk",
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7p4KXktq8os2pe5h4N0StjG4v4x2bN+Zfm0cQQrgsl5aghs9kWg75+/uoCwHulbprg5N4hvZjAKOWWIjjIMF+x9NGU+/VScU2q5QUL1zc05bmf+kTZoDUINxPjeSiQjdtlTB9hxh1/zwtcpcc3CIx7CUqj24RCuiqo5Yj2PROHFotbRBXNuBaezYcQXzuoy2wrDEkC69tPRtHMBYzpC9hCZL7bt7XnbsqDA4phQJRGrnAECUyV5tubiLtmlqW40OSp3XgGAct4GqF/Y5xtWwRvb0shBHQMsyxksRkWzLF3hF8zApMYQuQKYZDBABiJJD1D0ihs1eNwTEy8PJIH9pf jianyuan@gmail.com"
+    ],
+    "hosts": [
+      "www.wallgig.net",
+      "dev.wallgig.net"
+    ]
+  }
+}
