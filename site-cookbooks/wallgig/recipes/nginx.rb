@@ -10,6 +10,13 @@ include_recipe 'nginx::http_stub_status_module'
 
 app_env = "#{node["application"]["name"]}-#{node["application"]["rails_env"]}"
 
+directory node['application']['rails_root'] do
+  owner 'wallgig'
+  group 'wallgig'
+  mode 0755
+  action :create
+end
+
 template "#{node['nginx']['dir']}/sites-available/#{app_env}.conf" do
   source 'nginx_application.conf.erb'
   owner  'root'

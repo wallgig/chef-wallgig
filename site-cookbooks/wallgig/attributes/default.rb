@@ -19,7 +19,7 @@
 
 default['application']['name'] = 'wallgig'
 default['application']['rails_env'] = 'production'
-default['application']['rails_root'] = '/home/wallgig/www'
+default['application']['rails_root'] = '/srv/www/wallgig.net'
 default['application']['app_server'] = 'puma'
 default['application']['application_port'] = '9000'
 
