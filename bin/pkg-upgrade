@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+# Usage: ./pkg-updates [host]
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/.config.sh
+
+bundle exec knife pkg show upgrade -x toor -m ${CHEF_NODE}
