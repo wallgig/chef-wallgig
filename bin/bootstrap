@@ -4,7 +4,7 @@ set -e
 
 # Usage: ./bootstrap [host]
 
-source .config.sh
+source bin/.config.sh
 
 # The host key might change when we instantiate a new VM, so
 # we remove (-R) the old host key from known_hosts

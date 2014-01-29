@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+set -e
 
 # Usage: ./run [host]
 
-source .config.sh
+source bin/.config.sh
 
 bundle exec knife ssh -m ${CHEF_NODE} -x toor 'sudo chef-client'
