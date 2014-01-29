@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+# Usage: ./pkg-updates [host]
+
+source bin/.config.sh
+
+bundle exec knife pkg show updates -x toor -m ${CHEF_NODE}
