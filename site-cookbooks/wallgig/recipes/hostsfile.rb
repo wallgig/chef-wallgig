@@ -16,11 +16,11 @@ end
 
 hostsfile_entry 'ff02::2' do
   hostname 'ip6-allrouters'
-  acation :create
+  action :create
 end
 
 hostsfile_entry '::1' do
   hostname 'localhost'
   aliases ['ip6-localhost', 'ip6-loopback']
-  aaction :create
+  action :create
 end
