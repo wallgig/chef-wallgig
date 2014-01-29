@@ -14,6 +14,7 @@ directory node['application']['rails_root'] do
   owner 'wallgig'
   group 'wallgig'
   mode 0755
+  recursive true
   action :create
 end
 
