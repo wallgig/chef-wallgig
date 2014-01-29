@@ -2,7 +2,7 @@
 set -e
 
 # Usage: ./pkg-updates [host]
-
-source bin/.config.sh
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/.config.sh
 
 bundle exec knife pkg show updates -x toor -m ${CHEF_NODE}
