@@ -1,6 +1,12 @@
 server {
   listen 80;
-  server_name <%= node["fqdn"] %>;
+  server_name <%= node['fqdn'] %>;
+  return 301 $scheme://<%= node['domain'] %>$request_uri;
+}
+
+server {
+  listen 80;
+  server_name <%= node['domain'] %> *.<%= node['domain'] %>;
 
   # Set the max size for file uploads to 20Mb
   client_max_body_size 20M;
@@ -100,3 +106,40 @@ server {
   }
 }
 
+server {
+  listen 80;
+  server_name assets.<%= node['domain'] %>;
+  root <%= @rails_root %>/current/public/assets;
+
+  location / {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+}
+
+server {
+  listen 80;
+  server_name cdn.<%= node['domain'] %>;
+  root <%= @rails_root %>/shared/public/system/dragonfly/production;
+
+  location / {
+    deny all;
+  }
+
+  # Expires headers on static assets
+  location ~ ^/(assets|images|javascripts|stylesheets|system)/ {
+    expires max;
+    add_header "Cache-Control" "public";
+    access_log off;
+    break;
+  }
+
+  # Set expires max on static file types (make sure you are using cache busting filenames or query params):
+  location ~* ^.+\.(css|js|jpg|jpeg|gif|png|ico|gz|svg|svgz|ttf|otf|woff|eot|mp4|ogg|ogv|webm)$ {
+    expires max;
+    add_header "Cache-Control" "public";
+    access_log off;
+    break;
+  }
+}

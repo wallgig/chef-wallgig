@@ -1,0 +1,9 @@
+{
+  "name": "monitoring",
+  "description": "The monitoring role sets up any tools for monitoring",
+  "default_attributes": {
+  },
+  "run_list": [
+    "recipe[wallgig::datadog]"
+  ]
+}
