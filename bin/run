@@ -2,7 +2,7 @@
 set -e
 
 # Usage: ./run [host]
-
-source bin/.config.sh
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/.config.sh
 
 bundle exec knife ssh -m ${CHEF_NODE} -x toor 'sudo chef-client'

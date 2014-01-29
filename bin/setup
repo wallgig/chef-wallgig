@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if ! command -v gem >/dev/null; then
+  echo "Can't find the gem command"
+  echo "Make sure ruby and rubygems are installed"
+  exit 1
+fi
+
 if ! command -v bundle >/dev/null; then
   gem install bundler
 fi

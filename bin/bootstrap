@@ -3,8 +3,8 @@
 set -e
 
 # Usage: ./bootstrap [host]
-
-source bin/.config.sh
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/.config.sh
 
 # The host key might change when we instantiate a new VM, so
 # we remove (-R) the old host key from known_hosts
