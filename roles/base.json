@@ -53,7 +53,8 @@
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[annoyances]",
+    "recipe[hostname]",
+    "recipe[wallgig::hostsfile]",
     "recipe[apticron]",
     "recipe[apt]",
     "recipe[locale]",
@@ -62,8 +63,8 @@
     "recipe[wallgig::users]",
     "recipe[ntp]",
     "recipe[omnibus_updater]",
-    "recipe[sanitize]",
-    "recipe[motd]"
+    "recipe[motd]",
+    "recipe[sanitize]"
   ],
   "env_run_lists": {}
 }
