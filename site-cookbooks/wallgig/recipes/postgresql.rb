@@ -7,7 +7,7 @@ include_recipe 'chef-vault'
 %w{datadog wallgig}.each do |user|
   vault = chef_vault_item('databasesecrets', user)
 
-  pg_user 'wallgig' do
+  pg_user user do
     privileges superuser: false, createdb: false, login: true
     password vault['password']
   end
