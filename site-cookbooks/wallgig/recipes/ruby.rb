@@ -1,19 +1,8 @@
-node.set['poise-ruby']['ruby'] = 'ruby-200'
+node.set['rbenv']['group_users'] = %w{wallgig toor}
 
-include_recipe 'poise-ruby'
+include_recipe "rbenv"
+include_recipe "rbenv::ruby_build"
 
-poise_ruby 'ruby-200' do
-  version '2.0.0-p353'
-end
+rbenv_ruby '2.0.0-p353'
 
-gem_package 'bundler' do
-  gem_binary '/opt/ruby-200/bin/gem'
-end
-
-file '/etc/profile.d/ruby.sh' do
-  owner 'root'
-  group 'root'
-  mode 0755
-  action :create
-  content 'export PATH="$PATH:/opt/ruby-200/bin"'
-end
+rbenv_gem 'bundler'
