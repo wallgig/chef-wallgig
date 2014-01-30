@@ -19,6 +19,8 @@ cookbook 'elasticsearch', git: 'https://github.com/elasticsearch/cookbook-elasti
 cookbook 'rsyslog'
 cookbook 'chef-client'
 cookbook 'logwatch'
+cookbook 'smartmontools'
+cookbook 'sysstat'
 cookbook 'poise-ruby', git: 'https://github.com/poise/poise-ruby.git'
 cookbook 'chef-vault'
 cookbook 'sysctl'
