@@ -64,7 +64,8 @@
     "recipe[ntp]",
     "recipe[omnibus_updater]",
     "recipe[motd]",
-    "recipe[sanitize]"
-  ],
-  "env_run_lists": {}
+    "recipe[sanitize]",
+    "recipe[smartmontools]",
+    "recipe[sysstat]"
+  ]
 }
