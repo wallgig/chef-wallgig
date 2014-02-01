@@ -7,8 +7,8 @@
       "jdk_version": "7"
     },
     "elasticsearch": {
+      "allocated_memory": "1024m",
       "bootstrap": {
-        "cluster_name": "elasticsearch_wallgig",
         "mlockall": false
       }
     }
