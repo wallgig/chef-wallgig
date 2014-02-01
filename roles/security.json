@@ -22,7 +22,7 @@
     "recipe[openssh]",
     "recipe[sudo]",
     "recipe[fail2ban]",
-    "recipe[wallgig::ip_security]",
+    "recipe[wallgig::sysctl]",
     "recipe[wallgig::firewall]"
   ]
 }

@@ -5,6 +5,10 @@
 
 include_recipe 'sysctl'
 
+sysctl_param 'vm.swappiness' do
+  value 5
+end
+
 sysctl_param 'net.ipv4.tcp_timestamps' do
   value 0
 end
