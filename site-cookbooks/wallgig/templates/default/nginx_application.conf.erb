@@ -54,6 +54,33 @@ server {
     break;
   }
 
+  # Don't cache html5 offline support files
+  location ~* ^.+\.(manifest|appcache)$ {
+    expires -1;
+    access_log <%= "#{@log_dir}/#{@name}-#{@rails_env}" %>-static.log;
+    break;
+  }
+
+
+  # Expires headers on static assets
+  location ~ ^/(assets|images|javascripts|stylesheets|system)/ {
+    expires max;
+    add_header "Cache-Control" "public";
+    access_log off;
+    break;
+  }
+
+  # This is breaking some of our pages, need to find out why.
+  # Added 01-31-2014
+  # Set expires max on static file types (make sure you are using cache busting filenames or query params):
+  # location ~* ^.+\.(css|js|jpg|jpeg|gif|png|ico|gz|svg|svgz|ttf|otf|woff|eot|mp4|ogg|ogv|webm)$ {
+  #   expires max;
+  #   add_header "Cache-Control" "public";
+  #   access_log off;
+  #   break;
+  # }
+
+
   # try to load static files and cached files before passing upstream
   try_files $uri $uri/index.html $uri.html cache/$uri cache/$uri/index.html cache/$uri.html @<%= @app_server %>;
 
@@ -79,30 +106,6 @@ server {
     # proxy_buffering off;
 
     proxy_pass http://localhost:<%= node["application"]["application_port"] %>;
-  }
-
-  # Don't cache html5 offline support files
-  location ~* ^.+\.(manifest|appcache)$ {
-    expires -1;
-    access_log <%= "#{@log_dir}/#{@name}-#{@rails_env}" %>-static.log;
-    break;
-  }
-
-
-  # Expires headers on static assets
-  location ~ ^/(assets|images|javascripts|stylesheets|system)/ {
-    expires max;
-    add_header "Cache-Control" "public";
-    access_log off;
-    break;
-  }
-
-  # Set expires max on static file types (make sure you are using cache busting filenames or query params):
-  location ~* ^.+\.(css|js|jpg|jpeg|gif|png|ico|gz|svg|svgz|ttf|otf|woff|eot|mp4|ogg|ogv|webm)$ {
-    expires max;
-    add_header "Cache-Control" "public";
-    access_log off;
-    break;
   }
 }
 
