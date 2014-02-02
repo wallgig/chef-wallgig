@@ -5,4 +5,4 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/.config.sh
 
-bundle exec knife pkg show upgrade -x toor -m ${CHEF_NODE}
+bundle exec knife pkg install updates -z -x toor -m ${CHEF_NODE}
