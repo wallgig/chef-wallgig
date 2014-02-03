@@ -1,0 +1,49 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:     email_on_reboot
+# Required-Start:    $local_fs $remote_fs $network $syslog $named
+# Default-Start:     2 3 4 5
+# Short-Description: Sends a email after a server reboot
+# Description:       Sends a email after a server reboot
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAIL=/usr/bin/mail
+NAME=email-on-reboot
+DESC=email-on-reboot
+SERVER=`hostname -f`
+PUBLIC_IP=`curl --connect-timeout 5 -s ifconfig.me`
+PUBLIC_IPV6=`curl -6 --connect-timeout 5 -s ifconfig.me`
+MAIL_TO=root@localhost
+MAIL_FROM="Reboot Watcher <reboot@$SERVER>"
+
+test -x $MAIL || exit 0
+
+set -e
+
+. /lib/lsb/init-functions
+
+start() {
+mail -s " Boot of $SERVER" $MAIL_TO -aFROM:"${MAIL_FROM}" <<EOF
+$SERVER has booted up.
+public ip $PUBLIC_IP $PUBLIC_IPV6
+If this is news to you, please investigate.
+`date -u`
+EOF
+}
+
+case "$1" in
+  start)
+    log_daemon_msg "Starting $DESC" "$NAME"
+    start
+    log_end_msg $?
+    ;;
+
+  *)
+    echo "Usage: $NAME {start}" >&2
+    exit 1
+    ;;
+esac
+
+exit 0

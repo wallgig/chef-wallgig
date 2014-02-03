@@ -13,6 +13,7 @@
   },
   "run_list": [
     "recipe[postfix]",
-    "recipe[postfix::aliases]"
+    "recipe[postfix::aliases]",
+    "recipe[wallgig::emailonreboot]"
   ]
 }
