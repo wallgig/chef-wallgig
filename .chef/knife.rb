@@ -13,15 +13,16 @@ log_location             STDOUT
 node_name                user
 client_key               "#{home_dir}/.chef/#{user}.pem"
 cache_type               'BasicFile'
-cache_options( :path => "#{home_dir}/.chef/checksums" )
+cache_options(:path => "#{home_dir}/.chef/checksums")
 
 validation_client_name   "#{org}-validator"
 validation_key           "#{current_dir}/#{org}-validator.pem"
 
 # We keep our cookbooks in separate repos under a ~/chef/cookbooks dir
-cookbook_path            ["#{current_dir}/../cookbooks", "#{current_dir}/../site-cookbooks"]
-cookbook_copyright       "Wallgig.net"
-cookbook_license         "Apache 2"
+cookbook_path            ["#{current_dir}/../cookbooks", 
+                          "#{current_dir}/../site-cookbooks"]
+cookbook_copyright       'Wallgig.net'
+cookbook_license         'Apache 2'
 cookbook_email           "#{user_email}"
 
 # Allow overriding values in this knife.rb
@@ -31,4 +32,4 @@ Chef::Config.from_file(knife_override) if File.exist?(knife_override)
 knife[:vault_mode] = 'client'
 
 # knife essentials settings
-repo_mode "everything"
+repo_mode 'everything'
