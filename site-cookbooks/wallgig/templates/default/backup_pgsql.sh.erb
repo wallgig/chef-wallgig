@@ -1,0 +1,45 @@
+#!/bin/bash
+
+if [[ "$1" == "-v" ]]; then
+    shift;
+    export export PS4='[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+    set -o xtrace
+fi
+set -o errexit
+set -o pipefail
+
+BACKUP_BASE_DIR="<%= @conf['backup_base_dir'] %>"
+DBNAME="<%= @conf['dbname'] %>"
+PG_DUMP="<%= @conf['pg_dump'] %>"
+DATE=$(date +"<%= @conf['date_format'] %>")
+DAYS_TO_KEEP="<%= @conf['days_to_keep'] %>"
+
+# Make sure we have a secure unmask set
+umask 006
+
+#
+# Check that the backups directory exists if not create it and lock down
+# permissions
+#
+if [[ ! -d $BACKUP_BASE_DIR ]]; then
+  /bin/mkdir -p $BACKUP_BASE_DIR
+  /bin/chmod 700 $BACKUP_BASE_DIR
+fi
+
+if [[ ! -d $BACKUP_BASE_DIR/pgsql ]]; then
+  /bin/mkdir $BACKUP_BASE_DIR/pgsql
+  /bin/chmod 700 $BACKUP_BASE_DIR/pgsql
+fi
+
+#
+# Dump the database to the backup directory
+#
+cd ${BACKUP_BASE_DIR}/pgsql
+$PG_DUMP -d $DBNAME -c -o -f ${DBNAME}-${DATE}.sql
+
+#
+# Clean up the pgsql dumps directory to the specified number of days worth of
+# PostgreSQL dump files to keep around.
+#
+cd ${BACKUP_BASE_DIR}/pgsql
+/usr/bin/find *.sql -mtime +${DAYS_TO_KEEP} -delete

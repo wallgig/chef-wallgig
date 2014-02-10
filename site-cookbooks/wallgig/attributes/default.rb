@@ -23,3 +23,8 @@ default['application']['rails_root'] = '/srv/www/wallgig.net'
 default['application']['app_server'] = 'puma'
 default['application']['application_port'] = '9000'
 
+default['wallgig']['pg_backups']['backup_base_dir'] = '/home/wallgig/backups'
+default['wallgig']['pg_backups']['dbname'] = 'wallgig_production'
+default['wallgig']['pg_backups']['days_to_keep'] = '+7'
+default['wallgig']['pg_backups']['date_format'] = '%Y.%m.%d-%I.%M'
+default['wallgig']['pg_backups']['pg_dump'] = '/usr/bin/pg_dump'

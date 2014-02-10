@@ -1,0 +1,20 @@
+{
+  "name": "backup",
+  "description": "This role is used for backing up wallgig data.",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "tarsnap": {
+      "use_default_schedule": false,
+      "cron": {
+        "minute": "5",
+        "hour": "*"
+      }
+    }
+  },
+  "override_attributes": {},
+  "chef_type": "role",
+  "run_list": [
+    "recipe[wallgig::backups]"
+  ],
+  "env_run_lists": {}
+}
