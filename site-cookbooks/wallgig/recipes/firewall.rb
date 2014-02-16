@@ -25,3 +25,7 @@ simple_iptables_rule 'http' do
   jump 'ACCEPT'
 end
 
+simple_iptables_rule "bad-bot" do
+  rule '-s 129.21.129.165/32'
+  jump "DROP"
+end
