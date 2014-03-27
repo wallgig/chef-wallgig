@@ -40,6 +40,8 @@
     },
     "chef_client": {
       "interval": 1800,
+      "use_cron_d": true,
+      "client_fork": true,
       "init_style": "none",
       "cron": {
         "minute": "0",
