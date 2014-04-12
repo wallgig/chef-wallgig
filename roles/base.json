@@ -56,7 +56,6 @@
     "recipe[wallgig::hostsfile]",
     "recipe[chef-client::cron]",
     "recipe[chef-client::delete_validation]",
-    "recipe[client-rekey::default]",
     "recipe[wallgig::chef-handler]",
     "recipe[apticron]",
     "recipe[apt]",
