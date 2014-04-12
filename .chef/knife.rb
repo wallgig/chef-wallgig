@@ -4,8 +4,6 @@ home_dir    = ENV['HOME'] || ENV['HOMEDRIVE']
 org         = ENV['chef_org'] || 'wgig'
 user        = ENV['USER'].downcase
 
-knife_override = "#{home_dir}/.chef/knife_override.rb"
-
 chef_server_url          "https://api.opscode.com/organizations/#{org}"
 log_level                :info
 log_location             STDOUT
@@ -24,9 +22,6 @@ cookbook_path            ["#{current_dir}/../cookbooks",
 cookbook_copyright       'Wallgig.net'
 cookbook_license         'Apache 2'
 cookbook_email           "#{user_email}"
-
-# Allow overriding values in this knife.rb
-Chef::Config.from_file(knife_override) if File.exist?(knife_override)
 
 # Tell chef-vault we are using chef server.
 knife[:vault_mode] = 'client'
