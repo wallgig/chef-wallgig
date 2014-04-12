@@ -42,6 +42,7 @@ cookbook 'monit', git: 'https://github.com/phlipper/chef-monit.git'
 cookbook 'ulimit', git: 'https://github.com/bmhatfield/chef-ulimit.git'
 cookbook 'datadog'
 cookbook 'hostsfile'
+cookbook 'client-rekey'
 
 cookbook 'wallgig',
          path: 'site-cookbooks/wallgig'
