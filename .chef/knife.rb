@@ -25,6 +25,7 @@ cookbook_email           "#{user_email}"
 
 # Tell chef-vault we are using chef server.
 knife[:vault_mode] = 'client'
+knife[:vault_admins] = [ 'gregf', 'jianyuan' ]
 
 # knife essentials settings
 repo_mode 'everything'

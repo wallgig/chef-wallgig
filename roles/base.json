@@ -43,6 +43,10 @@
       "use_cron_d": true,
       "client_fork": true,
       "init_style": "none",
+      "config": {
+        "client_fork": true,
+        "ssl_verify_mode": ":verify_peer"
+      },
       "cron": {
         "minute": "0",
         "hour": "*"
