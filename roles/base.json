@@ -48,7 +48,7 @@
         "ssl_verify_mode": ":verify_peer"
       },
       "cron": {
-        "minute": "0",
+        "minute": "*/30",
         "hour": "*"
       }
     }
@@ -58,6 +58,7 @@
   "run_list": [
     "recipe[hostname]",
     "recipe[wallgig::hostsfile]",
+    "recipe[chef-client::config]",
     "recipe[chef-client::cron]",
     "recipe[chef-client::delete_validation]",
     "recipe[wallgig::chef-handler]",
