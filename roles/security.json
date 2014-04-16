@@ -14,7 +14,12 @@
     },
     "authorization": {
       "sudo": {
-        "passwordless": true
+        "passwordless": true,
+        "include_sudoers_d": true,
+        "sudoers_defaults": [
+          "env_reset",
+          "secure_path='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'"
+        ]
       }
     }
   },
