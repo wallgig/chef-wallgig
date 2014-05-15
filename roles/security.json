@@ -11,16 +11,6 @@
         "print_motd": "yes",
         "login_grace_time": "30"
       }
-    },
-    "authorization": {
-      "sudo": {
-        "passwordless": true,
-        "include_sudoers_d": true,
-        "sudoers_defaults": [
-          "env_reset",
-          "secure_path=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-        ]
-      }
     }
   },
   "run_list": [
@@ -28,6 +18,7 @@
     "recipe[sudo]",
     "recipe[fail2ban]",
     "recipe[wallgig::sysctl]",
-    "recipe[wallgig::firewall]"
+    "recipe[wallgig::firewall]",
+    "recipe[wallgig::sudo]"
   ]
 }
