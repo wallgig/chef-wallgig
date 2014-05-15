@@ -10,7 +10,9 @@
     "recipe[git]",
     "recipe[imagemagick]",
     "recipe[wallgig::ruby]",
-    "recipe[wallgig::nginx]"
+    "recipe[wallgig::nginx]",
+    "recipe[wallgig::sidekiq]",
+    "recipe[wallgig::puma]"
   ],
   "env_run_lists": {}
 }

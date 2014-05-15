@@ -43,6 +43,8 @@ cookbook 'datadog'
 cookbook 'hostsfile'
 cookbook 'client-rekey'
 cookbook 'ruby_install'
+cookbook 'puma', git: 'https://github.com/wallgig/chef-puma.git'
+cookbook 'sidekiq', git: 'https://github.com/wallgig/chef-sidekiq.git'
 
 cookbook 'wallgig',
          path: 'site-cookbooks/wallgig'
