@@ -8,7 +8,7 @@
   "chef_type": "role",
   "run_list": [
     "recipe[git]",
-    "recipe[imagemagick]",
+    "recipe[graphicsmagick]",
     "recipe[wallgig::ruby]",
     "recipe[wallgig::nginx]",
     "recipe[wallgig::sidekiq]",
