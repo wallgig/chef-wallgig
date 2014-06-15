@@ -1,19 +1,253 @@
 {
   "name": "www.wallgig.net",
   "chef_environment": "production",
+  "run_list": [
+    "role[base]",
+    "role[mail]",
+    "role[logging]",
+    "role[security]",
+    "role[database]",
+    "role[search]",
+    "role[queue]",
+    "role[web]",
+    "role[monitoring]",
+    "role[backup]"
+  ],
   "normal": {
     "tags": [
 
-    ]
-  },
-  "run_list": [
-    "role[base]",
-    "role[security]",
-    "role[mail]",
-    "role[logging]",
-    "role[queue]",
-    "role[search]",
-    "role[database]",
-    "role[web]"
-  ]
+    ],
+    "chef_client": {
+      "bin": "/usr/bin/chef-client"
+    },
+    "set_fqdn": "www.wallgig.net",
+    "smartmontools": {
+      "devices": [
+        "sda",
+        "sdb",
+        "sdc",
+        "sdd"
+      ],
+      "device_opts": "-H -l error -l selftest -m root@localhost"
+    },
+    "omnibus_updater": {
+      "full_url": "http://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chef_11.12.8-2_amd64.deb"
+    },
+    "simple_iptables": {
+      "policy": {
+        "filter": {
+          "INPUT": "DROP"
+        },
+        "nat": {
+        },
+        "mangle": {
+        },
+        "raw": {
+        }
+      },
+      "chains": {
+        "filter": [
+          "lo",
+          "state",
+          "logdrop",
+          "bad-bot",
+          "icmp",
+          "ssh",
+          "http"
+        ],
+        "nat": [
+
+        ],
+        "mangle": [
+
+        ],
+        "raw": [
+
+        ]
+      },
+      "rules": {
+        "filter": [
+          "-A INPUT --jump lo",
+          "-A lo --jump ACCEPT -i lo",
+          "-A INPUT --jump state",
+          "-A state --jump ACCEPT -m conntrack --ctstate ESTABLISHED,RELATED",
+          "-A INPUT --jump logdrop",
+          "-A logdrop -m limit --limit 5/m --limit-burst 10 -j LOG",
+          "-A INPUT --jump bad-bot",
+          "-A bad-bot --jump DROP --source 129.21.129.165",
+          "-A INPUT --jump icmp",
+          "-A icmp --jump ACCEPT --proto icmp",
+          "-A INPUT --jump ssh",
+          "-A ssh --jump ACCEPT --proto tcp --dport 22",
+          "-A ssh -p tcp --dport 22 -m state --state NEW -m recent --set",
+          "-A ssh --jump REJECT -p tcp --dport 22 -m state --state NEW -m recent --update --seconds 60 --hitcount 4",
+          "-A INPUT --jump http",
+          "-A http --jump ACCEPT --proto tcp --dport 80",
+          "-A http --jump ACCEPT --proto tcp --dport 443"
+        ],
+        "nat": [
+
+        ],
+        "mangle": [
+
+        ],
+        "raw": [
+
+        ]
+      }
+    },
+    "elasticsearch": {
+    },
+    "poise-ruby": {
+      "ruby": "ruby-200"
+    },
+    "nginx": {
+      "default_site_enabled": false
+    },
+    "datadog": {
+      "api_key": "ed6cdf4fbb9f0b9a96b0032a880383ca",
+      "application_key": "fa78b0051389643cfd888a68b789c82eb062d8f8",
+      "redis": {
+        "server": {
+          "addr": "127.0.0.1"
+        }
+      },
+      "nginx": {
+        "status_url": "http://127.0.0.1:8090/nginx_status/",
+        "instances": [
+          {
+            "nginx_status_url": "http://127.0.0.1:8090/nginx_status/"
+          }
+        ]
+      },
+      "elasticsearch": {
+        "instances": [
+          {
+            "url": "http://localhost:9200"
+          }
+        ]
+      }
+    },
+    "redis": {
+      "server": {
+        "port": 6379
+      }
+    },
+    "rbenv": {
+      "group_users": [
+        "wallgig",
+        "toor"
+      ],
+      "root": "/opt/rbenv"
+    },
+    "ruby_build": {
+      "prefix": "/opt/rbenv/plugins/ruby_build",
+      "bin_path": "/opt/rbenv/plugins/ruby_build/bin"
+    },
+    "rvm": {
+      "install_pkgs": [
+        "sed",
+        "grep",
+        "tar",
+        "gzip",
+        "bzip2",
+        "bash",
+        "curl",
+        "git-core"
+      ]
+    },
+    "tarsnap": {
+      "backups": {
+        "pgsql-dump": [
+          {
+            "schedule": "daily"
+          },
+          {
+            "path": [
+              "/home/wallgig/backups"
+            ]
+          }
+        ]
+      },
+      "schedules": {
+        "monthly": [
+          {
+            "period": 2592000
+          },
+          {
+            "always_keep": 2
+          },
+          {
+            "before": "0600"
+          }
+        ],
+        "weekly": [
+          {
+            "period": 604800
+          },
+          {
+            "always_keep": 4
+          },
+          {
+            "after": "0200"
+          },
+          {
+            "before": "0600"
+          },
+          {
+            "implies": "monthly"
+          }
+        ],
+        "daily": [
+          {
+            "period": 86400
+          },
+          {
+            "always_keep": 7
+          },
+          {
+            "after": "0200"
+          },
+          {
+            "before": "0600"
+          },
+          {
+            "implies": "weekly"
+          }
+        ],
+        "hourly": [
+          {
+            "period": 3600
+          },
+          {
+            "always_keep": 24
+          },
+          {
+            "implies": "daily"
+          }
+        ],
+        "realtime": [
+          {
+            "period": 900
+          },
+          {
+            "always_keep": 10
+          },
+          {
+            "implies": "hourly"
+          }
+        ]
+      }
+    },
+    "authorization": {
+      "sudo": {
+        "passwordless": true,
+        "include_sudoers_d": true,
+        "sudoers_defaults": [
+          "env_reset",
+          "secure_path=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        ]
+      }
+    }
+  }
 }
