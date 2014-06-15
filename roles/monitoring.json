@@ -4,6 +4,6 @@
   "default_attributes": {
   },
   "run_list": [
-    "recipe[wallgig::datadog]"
+    "recipe[wallgig::monitoring]"
   ]
 }

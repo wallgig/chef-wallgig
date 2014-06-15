@@ -40,13 +40,15 @@ cookbook 'sanitize'
 cookbook 'motd', git: 'https://github.com/flinc-chef/motd.git'
 cookbook 'monit', git: 'https://github.com/phlipper/chef-monit.git'
 cookbook 'ulimit', git: 'https://github.com/bmhatfield/chef-ulimit.git'
-cookbook 'datadog'
 cookbook 'hostsfile'
 cookbook 'client-rekey'
 cookbook 'ruby_install'
 cookbook 'puma', git: 'https://github.com/wallgig/chef-puma.git'
 cookbook 'sidekiq', git: 'https://github.com/wallgig/chef-sidekiq.git'
+cookbook 'graphite_reporting_handler', git: 'https://github.com/OnBeep/cookbook-graphite_reporting_handler.git'
 
 cookbook 'wallgig',
          path: 'site-cookbooks/wallgig'
+cookbook 'collectd',
+         path: '/home/gregf/chef-collectd'
 
