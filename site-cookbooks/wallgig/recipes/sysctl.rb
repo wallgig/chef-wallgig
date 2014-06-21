@@ -5,42 +5,42 @@
 
 include_recipe 'sysctl'
 
-sysctl 'vm.swappiness' do
+sysctl_param 'vm.swappiness' do
   value 5
 end
 
-sysctl 'net.ipv4.tcp_timestamps' do
+sysctl_param 'net.ipv4.tcp_timestamps' do
   value 0
 end
 
-sysctl 'net.ipv4.tcp_syncookies' do
+sysctl_param 'net.ipv4.tcp_syncookies' do
   value 1
 end
 
-sysctl 'net.ipv4.ip_forward' do
+sysctl_param 'net.ipv4.ip_forward' do
   value 0
 end
 
-sysctl 'net.ipv4.icmp_echo_ignore_broadcasts' do
+sysctl_param 'net.ipv4.icmp_echo_ignore_broadcasts' do
   value 1
 end
 
-sysctl 'net.ipv4.conf.all.log_martians' do
+sysctl_param 'net.ipv4.conf.all.log_martians' do
   value 1
 end
 
-sysctl 'net.ipv4.icmp_ignore_bogus_error_responses' do
+sysctl_param 'net.ipv4.icmp_ignore_bogus_error_responses' do
   value 1
 end
 
-sysctl 'net.ipv4.conf.all.rp_filter' do
+sysctl_param 'net.ipv4.conf.all.rp_filter' do
   value 1
 end
 
-sysctl 'net.ipv4.conf.all.send_redirects' do
+sysctl_param 'net.ipv4.conf.all.send_redirects' do
   value 0
 end
 
-sysctl 'net.ipv4.conf.all.accept_source_route' do
+sysctl_param 'net.ipv4.conf.all.accept_source_route' do
   value 0
 end
