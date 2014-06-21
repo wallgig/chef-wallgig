@@ -7,7 +7,7 @@
       "jdk_version": "7"
     },
     "elasticsearch": {
-      "allocated_memory": "1024m",
+      "allocated_memory": "512m",
       "bootstrap": {
         "mlockall": false
       }
