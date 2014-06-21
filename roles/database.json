@@ -3,6 +3,10 @@
   "description": "This role is used to configure postgresql.",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "postgresql": {
+      "ssl": false,
+      "work_mem": "50MB"
+    }
   },
   "override_attributes": {},
   "chef_type": "role",
